@@ -506,7 +506,7 @@
         previewTitle:'WhatsApp Message Preview', previewHint:'Complete all required fields above to preview your message.',
         paymentNote:'Open daily 11:00 – 03:00 · 2F, 1-15-1 Shimanouchi, Chuo-ku, Osaka<br>Tel <a href="tel:+81649632477" style="color:inherit">+81 6-4963-2477</a>',
         guestUnit: function(n){ return n + (n>1?' Guests':' Guest'); },
-        waIntro:'Hello, I would like to make a reservation at Celestique Spa.\n\n',
+        waIntro:'Hello, I would like to make a reservation at Celestique Spa Shinsaibashi (心斎橋店).\n\n',
         waName:'Name', waDate:'Date', waTime:'Time', waGuests:'Number of Guests', waMainGuest:'Main Guest',
         waSameCourse:'All guests choose the same course', waGuest:'Guest', waVip:'VIP Business Room Upgrade', waTotal:'Total',
         dateLocale:'en-US' },
@@ -526,7 +526,7 @@
         previewTitle:'WhatsApp メッセージプレビュー', previewHint:'送信内容を確認するため、上記の必須項目をすべてご記入ください。',
         paymentNote:'毎日 11:00〜翌3:00 · 大阪市中央区島之内1-15-1 2F<br>Tel <a href="tel:+81649632477" style="color:inherit">+81 6-4963-2477</a>',
         guestUnit: function(n){ return n + '名'; },
-        waIntro:'こんにちは、Celestique Spa のご予約を希望します。\n\n',
+        waIntro:'こんにちは、Celestique Spa 心斎橋店のご予約を希望します。\n\n',
         waName:'お名前', waDate:'日付', waTime:'時間', waGuests:'人数', waMainGuest:'代表者',
         waSameCourse:'全員同じコース', waGuest:'ゲスト', waVip:'VIPビジネスルーム アップグレード', waTotal:'合計',
         dateLocale:'ja-JP' },
@@ -546,7 +546,7 @@
         previewTitle:'WhatsApp 消息预览', previewHint:'请先填写上方所有必填项，即可预览消息内容。',
         paymentNote:'每天 11:00〜次日3:00 · 大阪市中央区岛之内1-15-1 2楼<br>Tel <a href="tel:+81649632477" style="color:inherit">+81 6-4963-2477</a>',
         guestUnit: function(n){ return n + ' 人'; },
-        waIntro:'您好，我想预约 Celestique Spa。\n\n',
+        waIntro:'您好，我想预约 Celestique Spa 心斋桥店。\n\n',
         waName:'姓名', waDate:'日期', waTime:'时间', waGuests:'人数', waMainGuest:'主预约人',
         waSameCourse:'所有客人都选择相同项目', waGuest:'客人', waVip:'VIP商务包间升级', waTotal:'合计',
         dateLocale:'zh-CN' }
@@ -570,7 +570,7 @@
 
     function buildGuestsOptionsHTML(selectedValue){
       var html = '<option value="">' + t('selectGuests') + '</option>';
-      for (var i=1;i<=5;i++){
+      for (var i=1;i<=10;i++){
         var sel = String(i)===selectedValue ? ' selected' : '';
         html += '<option value="'+i+'"'+sel+'>'+t('guestUnit')(i)+'</option>';
       }
