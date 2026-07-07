@@ -1479,3 +1479,16 @@ ul {
   .access-cta { flex-direction: column; align-items: stretch; }
   .hero-cta .btn, .access-cta .btn { width: 100%; }
 }
+
+/* recruitment section (patch) */
+.recruit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:2.4rem; }
+.recruit-card { background:var(--white); border:1px solid var(--gold-pale); padding:2rem 1.9rem; }
+.recruit-card h3 { font-family:var(--font-display); font-size:1.5rem; font-weight:600; color:var(--ink); margin-bottom:0.7rem; }
+.recruit-card > p { color:var(--ink-soft); font-size:0.92rem; line-height:1.75; margin-bottom:1.1rem; }
+.recruit-points { list-style:none; }
+.recruit-points li { font-size:0.88rem; color:var(--ink); padding:0.55rem 0; border-top:1px solid var(--gold-pale); }
+.recruit-points li:first-child { border-top:none; }
+.recruit-points li::before { content:"—"; color:var(--gold); margin-right:0.5rem; }
+.recruit-contact { text-align:center; }
+.recruit-contact > p { color:var(--ink-soft); font-size:0.95rem; margin-bottom:1.3rem; }
+@media (max-width:760px){ .recruit-grid { grid-template-columns:1fr; } }
