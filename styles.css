@@ -1484,3 +1484,4 @@ ul {
 
 /* recruitment highlight (patch) */
 .rec-star { color:#d4a24c; margin-right:.15rem; }
+.rec-title { font-weight:700; }
