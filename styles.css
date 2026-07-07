@@ -1068,7 +1068,7 @@ ul {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr;
   gap: clamp(2rem, 5vw, 4rem);
   padding-bottom: var(--space-xl);
 }
