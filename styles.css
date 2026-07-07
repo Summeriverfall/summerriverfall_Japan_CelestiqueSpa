@@ -1472,3 +1472,10 @@ ul {
     transform: none;
   }
 }
+
+/* mobile CTA alignment (patch): equal-width stacked buttons */
+@media (max-width: 760px) {
+  .hero-cta { flex-direction: column; align-items: stretch; width: min(320px, 100%); margin-left: auto; margin-right: auto; }
+  .access-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn, .access-cta .btn { width: 100%; }
+}

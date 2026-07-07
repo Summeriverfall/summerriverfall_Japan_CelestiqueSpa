@@ -393,7 +393,7 @@
 
         <div class="form-group" id="timeGroup">
           <label for="time" class="form-label" id="labelTime">Time *</label>
-          <input type="time" id="time" name="time" class="form-input" step="300" required>
+          <select id="time" name="time" class="form-select" required></select>
           <div class="form-hint" id="hintTime">Open daily 11:00 – 03:00 (last booking 02:00).</div>
           <div class="form-error" id="errorTime">Please select a time</div>
         </div>
@@ -494,7 +494,7 @@
         bookingSubtitle:'Fill in the form below to book your appointment',
         successMessage:'Your booking information has been prepared. You will be redirected to WhatsApp shortly...',
         labelService:'Course *', labelDate:'Date *', labelTime:'Time *', labelGuests:'Number of Guests *', labelName:'Name *',
-        selectCourse:'Select a course', selectGuests:'Select number of guests', namePlaceholder:'Enter your name',
+        selectCourse:'Select a course', selectTime:'Select a time', selectGuests:'Select number of guests', namePlaceholder:'Enter your name',
         hintTime:'Open daily 11:00 – 03:00 (last booking 02:00).',
         errorService:'Please select a course', errorDate:'Please select a date', errorTime:'Please select a time',
         errorTimeRange:'Please choose a time within business hours (11:00 – 02:00).',
@@ -514,7 +514,7 @@
         bookingSubtitle:'以下のフォームにご記入のうえ、ご予約ください',
         successMessage:'予約内容を作成しました。まもなく WhatsApp へ移動します…',
         labelService:'コース *', labelDate:'日付 *', labelTime:'時間 *', labelGuests:'人数 *', labelName:'お名前 *',
-        selectCourse:'コースを選択', selectGuests:'人数を選択', namePlaceholder:'お名前を入力',
+        selectCourse:'コースを選択', selectTime:'時間を選択', selectGuests:'人数を選択', namePlaceholder:'お名前を入力',
         hintTime:'毎日 11:00〜翌3:00（最終受付 翌2:00）',
         errorService:'コースを選択してください', errorDate:'日付を選択してください', errorTime:'時間を選択してください',
         errorTimeRange:'営業時間内（11:00〜翌2:00）の時間を選択してください。',
@@ -534,7 +534,7 @@
         bookingSubtitle:'请填写以下信息完成预约',
         successMessage:'预约信息已生成，即将跳转至 WhatsApp…',
         labelService:'项目 *', labelDate:'日期 *', labelTime:'时间 *', labelGuests:'人数 *', labelName:'姓名 *',
-        selectCourse:'请选择项目', selectGuests:'请选择人数', namePlaceholder:'请输入您的姓名',
+        selectCourse:'请选择项目', selectTime:'请选择时间', selectGuests:'请选择人数', namePlaceholder:'请输入您的姓名',
         hintTime:'每天 11:00〜次日3:00（最晚预约 次日2:00）',
         errorService:'请选择项目', errorDate:'请选择日期', errorTime:'请选择时间',
         errorTimeRange:'请选择营业时间内（11:00〜次日2:00）的时间。',
@@ -577,6 +577,19 @@
       return html;
     }
 
+    function pad2(n){ return n<10 ? '0'+n : ''+n; }
+    // 5-minute time slots within business hours 11:00 – 02:00 (last booking 02:00)
+    function buildTimeOptions(selectedValue){
+      var html = '<option value="">' + t('selectTime') + '</option>';
+      var slots = [];
+      var h, m;
+      for (h=11; h<=23; h++) for (m=0;m<60;m+=5) slots.push([h,m]);
+      for (h=0; h<=1; h++)  for (m=0;m<60;m+=5) slots.push([h,m]);
+      slots.push([2,0]);
+      slots.forEach(function(s){ var v = pad2(s[0])+':'+pad2(s[1]); html += '<option value="'+v+'"'+(v===selectedValue?' selected':'')+'>'+v+'</option>'; });
+      return html;
+    }
+
     function getInitialLang(){
       var p = new URLSearchParams(window.location.search); var lang = p.get('lang');
       if (lang==='cn'||lang==='jp'||lang==='en') return lang;
@@ -591,6 +604,7 @@
       currentLang = lang; var o = i18n[lang];
       var sv = document.getElementById('service').value;
       var gv = document.getElementById('guests').value;
+      var tv = document.getElementById('time').value;
       document.documentElement.lang = o.htmlLang;
       document.title = o.title;
       document.getElementById('backLinkText').textContent = o.backLink;
@@ -619,6 +633,7 @@
       document.getElementById('paymentNote').innerHTML = o.paymentNote;
       document.getElementById('service').innerHTML = buildServiceOptionsHTML(sv);
       document.getElementById('guests').innerHTML = buildGuestsOptionsHTML(gv);
+      document.getElementById('time').innerHTML = buildTimeOptions(tv);
       document.querySelectorAll('.lang-switch button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
       var url = new URL(window.location.href); url.searchParams.set('lang', lang); history.replaceState(null,'',url);
       updateAdditionalServices();
