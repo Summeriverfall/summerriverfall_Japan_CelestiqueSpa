@@ -1063,7 +1063,7 @@ ul {
 .footer {
   background: var(--dark);
   color: rgba(250, 246, 240, 0.75);
-  padding: var(--space-2xl) 0 0;
+  padding: var(--space-lg) 0;
 }
 
 .footer-grid {
@@ -1105,8 +1105,7 @@ ul {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(193, 154, 107, 0.2);
-  padding: 1.4rem 0;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -1482,3 +1481,6 @@ ul {
   .hero-cta .btn, .access-cta .btn { width: 100%; }
 }
 
+
+/* recruitment highlight (patch) */
+.rec-star { color:#d4a24c; margin-right:.15rem; }
